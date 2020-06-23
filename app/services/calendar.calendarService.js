@@ -20,32 +20,9 @@ calendarModule.service("calendarService", [
     ];
     let locale = "Asia/Dubai";
     let today = new Date().getTime() / 1000;
-    this.timeZoneError = "";
-
     today = moment.unix(today).tz(locale).startOf("day");
 
-    this.fetchTimeZone = async function() {
-      let url = "http://localhost:3000/now";
-      return $http.get(url).then(
-        response => {
-          if (response.status === 200) {
-            this.locale = response.data.timeZone;
-            this.today = moment
-              .unix(response.data.time)
-              .tz(locale)
-              .startOf("day");
-            this.calendar.dates = this.getDatesForMonth(
-              this.calendar.monthIndex,
-              this.calendar.year
-            );
-          }
-        },
-        err => {
-          this.timeZoneError = "An error occured while fetching time stamp!";
-          console.log(timeZoneError);
-        }
-      );
-    };
+    this.timeZoneError = "";
 
     function validateMonthInBounds(month) {
       /**
@@ -118,7 +95,6 @@ calendarModule.service("calendarService", [
         };
       });
 
-      console.log(reservationsMap);
       return reservationsMap;
     }
 
@@ -135,8 +111,30 @@ calendarModule.service("calendarService", [
           }
         },
         err => {
-          onError(err.data);
+          onError(err);
           this.fetchTennant();
+        }
+      );
+    };
+
+    this.fetchTimeZone = async function() {
+      let url = "http://localhost:3000/now";
+      return $http.get(url).then(
+        response => {
+          if (response.status === 200) {
+            this.locale = response.data.timeZone;
+            this.today = moment
+              .unix(response.data.time)
+              .tz(locale)
+              .startOf("day");
+            this.calendar.dates = this.getDatesForMonth(
+              this.calendar.monthIndex,
+              this.calendar.year
+            );
+          }
+        },
+        err => {
+          this.timeZoneError = "An error occured while fetching time stamp!";
         }
       );
     };
@@ -150,7 +148,6 @@ calendarModule.service("calendarService", [
           if (response.status === 200) {
             reservationsMap = {};
             updateReservationsMap(response.data.reserved);
-            console.log(response.data, reservationsMap);
             this.calendar.dates = this.getDatesForMonth(
               this.calendar.monthIndex,
               this.calendar.year
@@ -195,7 +192,6 @@ calendarModule.service("calendarService", [
 
     this.getDatesForMonth = function(month, year) {
       let numberofDays = getNumberofDays(month, year);
-      console.log(year, month, numberofDays);
       let calender = [];
       let startDate = getDateObject(year, month, 1);
       let endDate = getDateObject(year, month, numberofDays + 1);
