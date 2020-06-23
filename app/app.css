@@ -1,0 +1,14 @@
+.custom-col {
+    -ms-flex: 0 0 14.285714286%;
+    flex: 0 0 14.285714286%;
+    max-width: 14.285714286%;
+}
+
+.custom-modal {
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.281);
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    padding: 2rem;
+}

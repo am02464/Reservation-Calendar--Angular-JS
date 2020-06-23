@@ -1,0 +1,33 @@
+<div ng-controller="CalendarController">
+    <div class="container">
+        <h1 class="text-danger"></h1>
+        <div class="row">
+            <div class="col-4 text-left">
+                <a class="btn btn-dark text-white" ng-click="navigateToPrevMonth()">
+                    <</a>
+            </div>
+            <div class="col-4 text-center text-danger h1">
+                {{calendar.month}}, {{calendar.year}}
+            </div>
+            <div class="col-4 text-right text-white">
+                <a class="btn btn-dark" ng-click="navigateToNextMonth()">></a>
+            </div>
+        </div>
+        <div class="card text-center">
+            <div class="card-header">
+                <div class="row">
+                    <div class="custom-col h5 " ng-repeat='day in calendar.days'>{{day}}</div>
+                </div>
+            </div>
+            <div class="card-body ">
+                <div class="row p-0">
+                    <button class="custom-col border h5 p-3 btn btn-outline-dark" ng-click="reserve(e, dateObj)" ng-class="{'disabled':dateObj.monthIndex != calendar.monthIndex, 'btn-warning':dateObj.reservation}" ng-repeat="dateObj in calendar.dates">
+                            {{dateObj.date}}
+                        </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ng-include src="'./templates/reservation-template.html'"></ng-include>
+</div>

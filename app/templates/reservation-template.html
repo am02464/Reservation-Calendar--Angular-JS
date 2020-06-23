@@ -1,0 +1,29 @@
+<div ng-controller="ReservationController">
+    <div class="custom-modal" ng-show="isModalShow">
+        <div class="modal-dialog ">
+            <div class="modal-content ">
+                <div class="modal-header ">
+                    <h5 class="modal-title " id="reservationModalLabel">Reservation</h5>
+                    <button type="button " class="close" ng-click="closeModal()">
+          <span aria-hidden="true ">&times;</span>
+        </button>
+                </div>
+                <div class="modal-body ">
+                    <p class="text-danger">{{error}}</p>
+                    <div class=" form-group form-inline">
+                        <label for="tennantName">Tennant Name : <span>  {{selectedDate.reservation.tennantName}}</span></label>
+                        <input type="text " ng-show="!selectedDate.reservation" class="form-control ml-2" name="tennantName" ng-model="tennantName">
+                    </div>
+                    <div class="form-group">
+                        <label for="tennantName">Stay Date: {{selectedDate.date}}, {{selectedDate.month}} </label>
+                    </div>
+
+                </div>
+                <div class="modal-footer ">
+                    <button type="button " class="btn btn-success  btn-block" ng-click="createTennant()" ng-if="!selectedDate.reservation">Save changes</button>
+                    <button type="button " class="btn btn-danger btn-block" ng-click="removeTennant()" ng-if="selectedDate.reservation">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
