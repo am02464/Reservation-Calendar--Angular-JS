@@ -84,6 +84,7 @@ calendarModule.service("calendarService", [
        * expects reservations from the response payload of reservations API 
        * and updates reservationMap 
        */
+      reservationsMap = {};
       reservations.forEach(reservation => {
         let date = moment.unix(reservation.time).tz(locale).startOf("day");
 
@@ -94,8 +95,6 @@ calendarModule.service("calendarService", [
           month: date.month()
         };
       });
-
-      return reservationsMap;
     }
 
     this.updateTennant = async function(tennant, onSuccess, onError) {
@@ -146,7 +145,6 @@ calendarModule.service("calendarService", [
       return $http.get(url).then(
         response => {
           if (response.status === 200) {
-            reservationsMap = {};
             updateReservationsMap(response.data.reserved);
             this.calendar.dates = this.getDatesForMonth(
               this.calendar.monthIndex,
