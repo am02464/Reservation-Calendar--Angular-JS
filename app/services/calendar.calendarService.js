@@ -219,6 +219,9 @@ calendarModule.service("calendarService", [
       dates: this.getDatesForMonth(today.month(), today.year())
     };
 
+    // fetch time zone
+    this.fetchTimeZone();
+    // fetching Tennants
     this.fetchTennant();
   }
 ]);

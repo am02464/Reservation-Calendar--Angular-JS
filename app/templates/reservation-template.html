@@ -20,7 +20,7 @@
 
                 </div>
                 <div class="modal-footer ">
-                    <button type="button " class="btn btn-success  btn-block" ng-click="createTennant()" ng-if="!selectedDate.reservation">Save changes</button>
+                    <button type="button " class="btn btn-success  btn-block" ng-click="createTennant()" ng-if="!selectedDate.reservation && tennantName.length > 1">Confirm Stay</button>
                     <button type="button " class="btn btn-danger btn-block" ng-click="removeTennant()" ng-if="selectedDate.reservation">Cancel</button>
                 </div>
             </div>
