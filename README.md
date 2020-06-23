@@ -19,7 +19,7 @@ The project was completed as a hiring task of Stellic Inc.
 **This also requires a server to be runing. You can find its repo [here.](https://bitbucket.org/mpopatia/reservation-calendar/src/master/)**
 
 
-All the dependencies are mentioned in [package.json]() file. You just have to run the following command.
+All the dependencies are mentioned in [package.json](https://github.com/am02464/Reservation-Calendar--Angular-JS/blob/master/package.json) file. You just have to run the following command.
 ```
 $ npm i
 ```
