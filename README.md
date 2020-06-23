@@ -40,7 +40,7 @@ $ npm i
 	```
 5. you can access the web app on **localhost:8000**
 
-**if it doesnt run please make sure the http-server is installed properly or intall it as a gloabal packege using the following command**
+**if it doesn't run please make sure the http-server is installed properly or install it as a gloabal packege using the following command**
 
 ```npm install --global http-server```
 
@@ -51,7 +51,7 @@ $ npm i
 	- **lib**: Contains all static files js, css and images in their respective folders.
 	- **templates**: contains all partial html pages
 	- **app**: app.js defines the main module of this app
-	- **indez.html** it is the main page which is served on intital request
+	- **index.html** it is the main page which is served on intital request
 
 
 ## 📄 License
