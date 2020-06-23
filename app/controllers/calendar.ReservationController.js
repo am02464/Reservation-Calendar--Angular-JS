@@ -8,7 +8,6 @@ calendarModule.controller("ReservationController", [
     $scope.error;
 
     function resetScope() {
-      console.log("reset");
       $scope.selectedDate = null;
       $scope.tennantName = "";
       $scope.error = "";
@@ -29,7 +28,6 @@ calendarModule.controller("ReservationController", [
     };
 
     $scope.createTennant = function() {
-      console.log($scope.selectedDate.timeStamp);
       calendarService.updateTennant(
         {
           tennantName: $scope.tennantName,
@@ -46,7 +44,6 @@ calendarModule.controller("ReservationController", [
     };
 
     $scope.removeTennant = function() {
-      console.log($scope.selectedDate.timeStamp);
       calendarService.updateTennant(
         {
           tennantName: $scope.tennantName,

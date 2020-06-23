@@ -111,7 +111,7 @@ calendarModule.service("calendarService", [
           }
         },
         err => {
-          onError(err);
+          onError("Some unexpected Error occured");
           this.fetchTennant();
         }
       );
@@ -155,7 +155,7 @@ calendarModule.service("calendarService", [
           }
         },
         err => {
-          console.log(err);
+          console.log("Some unexpected Error occured while fetching Tennants");
         }
       );
     };
