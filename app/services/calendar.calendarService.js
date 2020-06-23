@@ -43,7 +43,7 @@ calendarModule.service("calendarService", [
 
     function getNextMonth(month, year) {
       /**
-       * returns next month
+       * returns next month, and year
        */
       month = validateMonthInBounds(month);
       year = month === 11 ? year + 1 : year;
@@ -207,6 +207,13 @@ calendarModule.service("calendarService", [
       }
 
       calender.push(endDate);
+
+      let [nextMonth, nextYear] = getNextMonth(month, year);
+      let remainingDays = 7 - endDate.dayIndex;
+
+      for (let day = 1; day < remainingDays; day++) {
+        calender.push(getDateObject(nextYear, nextMonth, day + 1));
+      }
 
       return calender;
     };
